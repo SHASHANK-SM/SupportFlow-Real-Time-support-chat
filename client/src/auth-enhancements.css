@@ -1,0 +1,8 @@
+.registration-role{display:grid;gap:8px;padding:13px;border:1px solid #dce6f5;border-radius:12px;background:linear-gradient(135deg,#f8fbff,#f0f5ff)}
+.registration-role>span{font-size:13px;font-weight:700;color:#3d4b60}
+.registration-role small{color:#708098;font-size:12px;line-height:1.4}
+.registration-role .role-toggle{background:#e5ebf7}
+.registration-role .role-toggle button{padding:9px}
+.portal-submit{transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+.portal-submit:not(:disabled):hover{background:#225fd5;transform:translateY(-1px);box-shadow:0 12px 23px #306ce54a}
+.field:focus-within{border-color:#8cb1f4;background:#f8fbff;box-shadow:0 0 0 4px #306ce514}

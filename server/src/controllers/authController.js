@@ -1,0 +1,2 @@
+import {register,login} from '../services/authService.js';import {ok} from '../utils/apiResponse.js';import {asyncHandler} from '../utils/asyncHandler.js';
+export const registerUser=asyncHandler(async(req,res)=>ok(res,await register(req.body),'Account created',201));export const loginUser=asyncHandler(async(req,res)=>ok(res,await login(req.body.email,req.body.password,req.body.role),'Welcome back'));export const me=asyncHandler(async(req,res)=>ok(res,{user:req.user}));export const logout=asyncHandler(async(req,res)=>ok(res,{},'Logged out'));

@@ -1,0 +1,2 @@
+import mongoose from 'mongoose';
+const schema=new mongoose.Schema({customerId:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true,index:true},agentId:{type:mongoose.Schema.Types.ObjectId,ref:'User',index:true},status:{type:String,enum:['waiting','active','closed'],default:'waiting',index:true},priority:{type:String,enum:['normal','high','urgent'],default:'normal',index:true},lastMessage:String,lastMessageAt:Date,unreadCount:{type:Number,default:0},closedAt:Date},{timestamps:true}); schema.index({updatedAt:-1}); export default mongoose.model('Conversation',schema);

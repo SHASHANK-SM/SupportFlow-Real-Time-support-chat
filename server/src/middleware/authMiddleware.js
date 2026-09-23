@@ -1,0 +1,3 @@
+import jwt from 'jsonwebtoken'; import User from '../models/User.js'; import {env} from '../config/env.js';
+export async function requireAuth(req,res,next){try{const token=req.headers.authorization?.replace('Bearer ',''); if(!token) return res.status(401).json({success:false,message:'Authentication required'}); const {userId}=jwt.verify(token,env.jwtSecret); const user=await User.findById(userId); if(!user) return res.status(401).json({success:false,message:'Invalid session'}); req.user=user; next();}catch{return res.status(401).json({success:false,message:'Invalid or expired session'});}}
+export const requireRole=(...roles)=>(req,res,next)=>roles.includes(req.user.role)?next():res.status(403).json({success:false,message:'You do not have permission for this action'});
