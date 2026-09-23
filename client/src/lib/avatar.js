@@ -10,5 +10,10 @@ export function personEmoji(person){
   return FACES[hashKey(key)%FACES.length];
 }
 
+/** Customer-facing label for an assigned support agent. */
+export function supportAgentLabel(agent){
+  return agent?.name?`${agent.name} (Support Team)`:'Support Team';
+}
+
 /** Fallback initial, used for aria-labels and anywhere text-only is needed. */
 export function initials(person){return (person?.name||'S')[0]?.toUpperCase()||'S';}

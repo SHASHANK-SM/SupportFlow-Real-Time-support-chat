@@ -775,3 +775,12 @@ button:focus-visible,textarea:focus-visible,input:focus-visible,a:focus-visible,
   .brand-mark{width:34px;height:34px}
   .composer{padding:10px 12px}
 }
+/* Clearer chat bubbles and a labeled, animated typing indicator. */
+.premium-chat .message-bubble,.customer-chat-page .message-bubble{max-width:100%;padding:12px 15px;border-radius:17px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere;box-shadow:0 3px 10px rgba(28,39,67,.07)}
+.premium-chat .message.incoming .message-bubble,.customer-chat-page .customer-message.incoming .message-bubble{background:#fff;border:1px solid #e7eaf2;border-bottom-left-radius:6px;color:#27344b}
+.premium-chat .message.outgoing .message-bubble,.customer-chat-page .customer-message.outgoing .message-bubble{background:linear-gradient(135deg,#5b55d8,#7269e8);border:1px solid #625de0;border-bottom-right-radius:6px;color:#fff}
+.typing-indicator{display:flex;align-items:center;gap:5px;min-height:34px;padding:8px 12px;border:1px solid #e8eaf2;border-radius:14px 14px 14px 5px;background:#fff;color:#69758b;box-shadow:0 4px 12px rgba(28,39,67,.06);font-size:0}
+.typing-indicator i,.typing-indicator>span:nth-child(-n+3){display:block;width:6px;height:6px;border-radius:50%;background:#827cf0;animation:typing-bounce 1s infinite ease-in-out}
+.typing-indicator i:nth-child(2),.typing-indicator>span:nth-child(2){animation-delay:.14s}.typing-indicator i:nth-child(3),.typing-indicator>span:nth-child(3){animation-delay:.28s}
+.typing-indicator::after{content:'Typing';margin-left:5px;font-size:11px;font-weight:600}.customer-typing-indicator span{display:none}.customer-typing-indicator::after{content:'Support agent is typing'}
+@keyframes typing-bounce{0%,65%,100%{transform:translateY(0);opacity:.5}35%{transform:translateY(-3px);opacity:1}}

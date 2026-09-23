@@ -3,7 +3,7 @@ import {Link,useNavigate,useParams} from 'react-router-dom';import {useDispatch,
 import {Archive,ArrowLeft,Bell,ChevronDown,FileText,Headphones,LogOut,Paperclip,Send,Settings,Smile,SlidersHorizontal,UserRound,WifiOff,X,Check,CheckCheck} from 'lucide-react';
 import api from '../lib/api.js';import {connectSocket,disconnectSocket,getSocket} from '../lib/socket.js';import {clearAuth} from '../app/store.js';
 import {createAttachment,isImageAttachment} from '../lib/attachments.js';
-import {personEmoji} from '../lib/avatar.js';
+import {personEmoji,supportAgentLabel} from '../lib/avatar.js';
 const time=t=>new Intl.DateTimeFormat(undefined,{hour:'numeric',minute:'2-digit'}).format(new Date(t));
 const date=t=>new Intl.DateTimeFormat(undefined,{month:'short',day:'numeric'}).format(new Date(t));
 const emojis=['🙂','😊','👍','🎉','❤️','🙏','👋','✨'];
@@ -53,7 +53,7 @@ export default function CustomerChat(){
         <button onClick={()=>go('/customer/conversations')}><ArrowLeft/> <span>Conversations</span></button>
         <div className="chat-person">
           <span className="avatar">{personEmoji(agent)}</span>
-          <span><b>{agent?.name||'Support team'}</b><small><i className={agent?.isOnline?'online':''}/>{agent?.isOnline?'Online':agent?.lastSeen?'Last seen recently':'Waiting for an agent'}</small></span>
+          <span><b>{supportAgentLabel(agent)}</b><small><i className={agent?.isOnline?'online':''}/>{agent?.isOnline?'Online':agent?.lastSeen?'Last seen recently':'Waiting for an agent'}</small></span>
         </div>
         <div className={'chat-status '+chat.status}>{chat.status==='waiting'?'Waiting for a support agent…':chat.status==='active'?'Active conversation':'Closed'}</div>
         {chat.status!=='closed'&&<button className="end-chat" onClick={close}><Archive size={16}/><span>End chat</span></button>}
@@ -66,7 +66,7 @@ export default function CustomerChat(){
         {chat.status==='waiting'&&<div className="waiting-banner"><span/> We've received your request. Waiting for a support agent…</div>}
         {!messages.length&&<div className="chat-empty"><Headphones size={32}/><h2>Start the conversation</h2><p>Tell us what you need help with. We'll be with you shortly.</p></div>}
         {messages.map((m,i)=><CustomerMessage key={m._id} message={m} user={user} time={time} date={date} messages={messages} index={i} getReadStatus={getReadStatus} getReadIcon={getReadIcon}/>)}
-        {typing&&<div className="typing-indicator"><span/><span/><span/></div>}
+        {typing&&<div className="typing-indicator customer-typing-indicator" role="status" aria-label="The support agent is typing"><i/><i/><i/><span>Support agent is typing</span></div>}
         <div ref={msgEnd}/>
       </main>
       <div className="composer">
