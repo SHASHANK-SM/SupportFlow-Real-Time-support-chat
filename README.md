@@ -1,4 +1,4 @@
-cd # SupportFlow — real-time customer support
+# SupportFlow — real-time customer support
 
 A production-oriented customer/support-agent chat workspace. Conversations and messages persist in MongoDB; Socket.IO supplies authenticated real-time delivery, typing, presence, read receipts, and inbox updates.
 
