@@ -1,3 +1,4 @@
+
 # SupportFlow — real-time customer support
 
 A production-oriented customer/support-agent chat workspace. Conversations and messages persist in MongoDB; Socket.IO supplies authenticated real-time delivery, typing, presence, read receipts, and inbox updates.
@@ -44,3 +45,6 @@ Authenticated clients use `join_conversation`, `leave_conversation`, `send_messa
 ## Security notes
 
 Passwords are bcrypt hashed and excluded from serialized users. JWT role claims are never trusted alone: every request resolves the server-side user. Helmet, CORS, rate limits, message length limits, authorization checks, and generic authentication errors are applied centrally. Use only a unique strong secret and HTTPS in production.
+
+
+https://github.com/user-attachments/assets/fced1d3b-d1a0-4155-9d8f-b30654150cce
